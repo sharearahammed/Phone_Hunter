@@ -40,14 +40,22 @@ console.log('is showAll : ',isShowAll);
         <div class="card-body">
             <h2 class="card-title">${phone.phone_name}</h2>
             <p>${phone.slug}</p>
-            <div class="card-actions justify-end">
-            <button class="btn btn-primary">Buy Now</button>
+            <div class="card-actions justify-center">
+            <button onclick="handleSlowDetails('${phone.slug}')" class="btn btn-primary">Show Details</button>
             </div>
         </div>`;
         phoneConainer.appendChild(phoneCard);
   });
   loading(false);
 };
+
+// Show phone Details
+const handleSlowDetails = async (id) => {
+    console.log('show details',id);
+    const res = await fetch (`https://openapi.programming-hero.com/api/phone/${id}`);
+    const data = await res.json();
+    console.log(data)
+}
 
 
 // Search button
